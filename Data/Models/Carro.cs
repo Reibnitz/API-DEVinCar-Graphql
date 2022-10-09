@@ -2,7 +2,7 @@
 
 namespace API_DEVinCar_Graphql.Models
 {
-    public class Carro : ICarro
+    public class Carro
     {
         [Key]
         public int Id { get; set; }

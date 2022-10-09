@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API_DEVinCar_Graphql.Models
 {
-    public class MotoTriciclo : IMotoTriciclo
+    public class MotoTriciclo
     {
         [Key]
         public int Id { get; set; }
