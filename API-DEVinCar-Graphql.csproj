@@ -29,7 +29,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Data\Dtos\" />
-	  <Folder Include="Data\Seeds\" />
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
