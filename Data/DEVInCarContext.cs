@@ -1,11 +1,12 @@
-﻿using API_DEVinCar_Graphql.Models;
+﻿using API_DEVinCar_Graphql.Data.Seeds;
+using API_DEVinCar_Graphql.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_DEVinCar_Graphql.Data
 {
-    public class DEVInCarContextext : DbContext
+    public class DEVInCarContext : DbContext
     {
-        public DEVInCarContextext(DbContextOptions<DEVInCarContextext> options) : base(options)
+        public DEVInCarContext(DbContextOptions<DEVInCarContext> options) : base(options)
         {
 
         }
@@ -13,5 +14,12 @@ namespace API_DEVinCar_Graphql.Data
         public DbSet<Carro> Carros { get; set; }
         public DbSet<Camionete> Camionetes { get; set; }
         public DbSet<MotoTriciclo> MotoTriciclos { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Camionete>().HasData(CamioneteSeeder.Seed);
+            builder.Entity<Carro>().HasData(CarroSeeder.Seed);
+            builder.Entity<MotoTriciclo>().HasData(MotoTricicloSeeder.Seed);
+        }
     }
 }
