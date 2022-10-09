@@ -11,7 +11,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 potencia: 8.33,
                 rodas: 2,
                 dataFabricacao: new DateTime(2016, 07, 03),
-                name: "Biz",
+                nome: "Biz",
                 placa: "ASD-4123",
                 valor: 8900.00,
                 cor: "Azul"
@@ -21,7 +21,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 potencia: 14.9,
                 rodas: 2,
                 dataFabricacao: new DateTime(2018, 10, 09),
-                name: "CG-160",
+                nome: "CG-160",
                 placa: "FED-5193",
                 valor: 10520.00,
                 cor: "Preto"
@@ -31,7 +31,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 potencia: 21,
                 rodas: 3,
                 dataFabricacao: new DateTime(2017, 01, 07),
-                name: "Spider",
+                nome: "Spider",
                 placa: "BSC-9297",
                 valor: 16999.00,
                 cor: "Preto"

@@ -21,7 +21,7 @@ namespace API_DEVinCar_Graphql.Models
         public DateTime DataFabricacao { get; set; }
 
         [Required(ErrorMessage = "Campo Name de preenchimento obrigatório")]
-        public string Name { get; set; }
+        public string Nome { get; set; }
 
         [Required(ErrorMessage = "Campo Placa de preenchimento obrigatório")]
         public string Placa { get; set; }
@@ -33,12 +33,12 @@ namespace API_DEVinCar_Graphql.Models
         public string Cor { get; set; }
 
         public MotoTriciclo(double potencia, int rodas, DateTime dataFabricacao,
-            string name, string placa, double valor, string cor)
+            string nome, string placa, double valor, string cor)
         {
             Potencia = potencia;
             Rodas = rodas;
             DataFabricacao = dataFabricacao;
-            Name = name;
+            Nome = nome;
             Placa = placa;
             Valor = valor;
             Cor = cor;

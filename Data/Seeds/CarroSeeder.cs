@@ -12,7 +12,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 portas: 4,
                 flex: true,
                 dataFabricacao: new DateTime(2022, 05, 13),
-                name: "Kwid",
+                nome: "Kwid",
                 placa: "ABC-1234",
                 valor: 59999.90,
                 cor: "Vermelho"
@@ -23,7 +23,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 portas: 2,
                 flex: true,
                 dataFabricacao: new DateTime(2013, 09, 23),
-                name: "Uno",
+                nome: "Uno",
                 placa: "XYZ-6789",
                 valor: 24999.90,
                 cor: "Vermelho"
@@ -34,7 +34,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 portas: 4,
                 flex: false,
                 dataFabricacao: new DateTime(2017, 11, 07),
-                name: "Ka",
+                nome: "Ka",
                 placa: "AAA-1111",
                 valor: 49999.90,
                 cor: "Preto"

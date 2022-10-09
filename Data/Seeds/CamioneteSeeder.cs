@@ -13,7 +13,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 tipoCombustivel: ETipoCombustivel.Gasolina,
                 capacidadeCacamba: 844,
                 dataFabricacao: new DateTime(2021, 12, 13),
-                name: "Strada",
+                nome: "Strada",
                 placa: "CAM-0397",
                 valor: 109990.00,
                 cor: "Prata"
@@ -25,7 +25,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 tipoCombustivel: ETipoCombustivel.Diesel,
                 capacidadeCacamba: 1570,
                 dataFabricacao: new DateTime(2020, 06, 21),
-                name: "Hilux",
+                nome: "Hilux",
                 placa: "CAM-0397",
                 valor: 260390.00,
                 cor: "Vermelho"
@@ -37,7 +37,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 tipoCombustivel: ETipoCombustivel.Diesel,
                 capacidadeCacamba: 580,
                 dataFabricacao: new DateTime(2021, 12, 13),
-                name: "Saveiro",
+                nome: "Saveiro",
                 placa: "CAM-0397",
                 valor: 99000.00,
                 cor: "Azul"
