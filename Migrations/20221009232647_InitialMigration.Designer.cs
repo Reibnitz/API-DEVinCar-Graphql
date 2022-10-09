@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_DEVinCar_Graphql.Migrations
 {
     [DbContext(typeof(DEVInCarContext))]
-    [Migration("20221009230117_InitialMigration")]
+    [Migration("20221009232647_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,7 +45,7 @@ namespace API_DEVinCar_Graphql.Migrations
                     b.Property<DateTime>("DataFabricacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -74,10 +74,10 @@ namespace API_DEVinCar_Graphql.Migrations
                         {
                             Id = 1,
                             CapacidadeCacamba = 844,
-                            Chassi = new Guid("ff0eb4c0-4622-4df3-bb83-e85262e14b74"),
+                            Chassi = new Guid("2b1e1249-86bb-4f62-aafa-a5c7aa9753d6"),
                             Cor = "Prata",
                             DataFabricacao = new DateTime(2021, 12, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Strada",
+                            Nome = "Strada",
                             Placa = "CAM-0397",
                             Portas = 2,
                             Potencia = 107.0,
@@ -88,10 +88,10 @@ namespace API_DEVinCar_Graphql.Migrations
                         {
                             Id = 2,
                             CapacidadeCacamba = 1570,
-                            Chassi = new Guid("0776ea6b-a2dd-4e2a-8a85-a855c9eb1780"),
+                            Chassi = new Guid("5801bba8-aeb9-4a83-8ff1-d9756bd45cd7"),
                             Cor = "Vermelho",
                             DataFabricacao = new DateTime(2020, 6, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Hilux",
+                            Nome = "Hilux",
                             Placa = "CAM-0397",
                             Portas = 4,
                             Potencia = 204.0,
@@ -102,10 +102,10 @@ namespace API_DEVinCar_Graphql.Migrations
                         {
                             Id = 3,
                             CapacidadeCacamba = 580,
-                            Chassi = new Guid("e326a6ee-f2cc-406c-8ea7-075d91f41582"),
+                            Chassi = new Guid("c47e66df-612a-44ff-922d-baef9c86fe4d"),
                             Cor = "Azul",
                             DataFabricacao = new DateTime(2021, 12, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Saveiro",
+                            Nome = "Saveiro",
                             Placa = "CAM-0397",
                             Portas = 2,
                             Potencia = 71.0,
@@ -135,7 +135,7 @@ namespace API_DEVinCar_Graphql.Migrations
                     b.Property<bool>("Flex")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -160,11 +160,11 @@ namespace API_DEVinCar_Graphql.Migrations
                         new
                         {
                             Id = 1,
-                            Chassi = new Guid("638a9b66-8c4b-43a9-9c60-199fe48f07a9"),
+                            Chassi = new Guid("abd68813-0f00-4021-b038-662ff5057a25"),
                             Cor = "Vermelho",
                             DataFabricacao = new DateTime(2022, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Flex = true,
-                            Name = "Kwid",
+                            Nome = "Kwid",
                             Placa = "ABC-1234",
                             Portas = 4,
                             Potencia = 71.0,
@@ -173,11 +173,11 @@ namespace API_DEVinCar_Graphql.Migrations
                         new
                         {
                             Id = 2,
-                            Chassi = new Guid("d008bd48-af1a-41b5-9538-51aeb970a279"),
+                            Chassi = new Guid("a2a2583b-e389-4e5d-8a26-be2f2f6bae8c"),
                             Cor = "Vermelho",
                             DataFabricacao = new DateTime(2013, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Flex = true,
-                            Name = "Uno",
+                            Nome = "Uno",
                             Placa = "XYZ-6789",
                             Portas = 2,
                             Potencia = 65.0,
@@ -186,11 +186,11 @@ namespace API_DEVinCar_Graphql.Migrations
                         new
                         {
                             Id = 3,
-                            Chassi = new Guid("b3394c00-b5d9-4991-92eb-8f67fa037ce9"),
+                            Chassi = new Guid("d3d60fbf-e7d4-44ab-a794-af1357225c0c"),
                             Cor = "Preto",
                             DataFabricacao = new DateTime(2017, 11, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Flex = false,
-                            Name = "Ka",
+                            Nome = "Ka",
                             Placa = "AAA-1111",
                             Portas = 4,
                             Potencia = 71.0,
@@ -216,7 +216,7 @@ namespace API_DEVinCar_Graphql.Migrations
                     b.Property<DateTime>("DataFabricacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -241,10 +241,10 @@ namespace API_DEVinCar_Graphql.Migrations
                         new
                         {
                             Id = 1,
-                            Chassi = new Guid("5b3aa894-99e9-4452-983c-56a5e40ab3ba"),
+                            Chassi = new Guid("7570d177-6363-43c2-98b4-1d03d7741a8d"),
                             Cor = "Azul",
                             DataFabricacao = new DateTime(2016, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Biz",
+                            Nome = "Biz",
                             Placa = "ASD-4123",
                             Potencia = 8.3300000000000001,
                             Rodas = 2,
@@ -253,10 +253,10 @@ namespace API_DEVinCar_Graphql.Migrations
                         new
                         {
                             Id = 2,
-                            Chassi = new Guid("d2417027-c057-49fe-b851-ccd18bca34d7"),
+                            Chassi = new Guid("43c2aebe-6c0b-460f-963e-a08a2165759b"),
                             Cor = "Preto",
                             DataFabricacao = new DateTime(2018, 10, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "CG-160",
+                            Nome = "CG-160",
                             Placa = "FED-5193",
                             Potencia = 14.9,
                             Rodas = 2,
@@ -265,10 +265,10 @@ namespace API_DEVinCar_Graphql.Migrations
                         new
                         {
                             Id = 3,
-                            Chassi = new Guid("14e98e79-c120-483d-9354-c17800747041"),
+                            Chassi = new Guid("55547fba-c977-42c5-9071-aa50266ed74c"),
                             Cor = "Preto",
                             DataFabricacao = new DateTime(2017, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Spider",
+                            Nome = "Spider",
                             Placa = "BSC-9297",
                             Potencia = 21.0,
                             Rodas = 3,
