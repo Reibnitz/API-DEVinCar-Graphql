@@ -8,28 +8,41 @@ namespace API_DEVinCar_Graphql.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public int Potencia { get; set; }
+        [Required(ErrorMessage = "Campo Potencia de preenchimento obrigatório")]
+        public double Potencia { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Rodas de preenchimento obrigatório")]
         public int Rodas { get; set; }
 
-        [Required]
-        public Guid Chassi { get; set; }
+        public Guid Chassi { get; private set; }
 
-        [Required]
-        public DateOnly DataFabricacao { get; set; }
+        [DataType(DataType.DateTime, ErrorMessage = "Formato de data inválido.")]
+        [Required(ErrorMessage = "Campo DataFabricacao de preenchimento obrigatório")]
+        public DateTime DataFabricacao { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Name de preenchimento obrigatório")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Placa de preenchimento obrigatório")]
         public string Placa { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Valor de preenchimento obrigatório")]
         public double Valor { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Cor de preenchimento obrigatório")]
         public string Cor { get; set; }
+
+        public MotoTriciclo(double potencia, int rodas, DateTime dataFabricacao,
+            string name, string placa, double valor, string cor)
+        {
+            Potencia = potencia;
+            Rodas = rodas;
+            DataFabricacao = dataFabricacao;
+            Name = name;
+            Placa = placa;
+            Valor = valor;
+            Cor = cor;
+            Chassi = Guid.NewGuid();
+        }
     }
 }
