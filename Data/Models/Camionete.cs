@@ -2,7 +2,7 @@
 
 namespace API_DEVinCar_Graphql.Models
 {
-    public class Camionete
+    public class Camionete : ICamionete
     {
         [Key]
         public int Id { get; set; }
@@ -37,9 +37,11 @@ namespace API_DEVinCar_Graphql.Models
         [Required(ErrorMessage = "Campo Cor de preenchimento obrigatório")]
         public string Cor { get; set; }
 
+        public bool Disponivel { get; set; }
+
         public Camionete(double potencia, int portas, ETipoCombustivel tipoCombustivel,
             int capacidadeCacamba, DateTime dataFabricacao, string nome,
-            string placa, double valor, string cor)
+            string placa, double valor, string cor, bool disponivel = true)
         {
             Potencia = potencia;
             Portas = portas;
@@ -51,6 +53,7 @@ namespace API_DEVinCar_Graphql.Models
             Valor = valor;
             Cor = cor;
             Chassi = Guid.NewGuid();
+            Disponivel = disponivel;
         }
     }
 }

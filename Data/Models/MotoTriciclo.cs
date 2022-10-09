@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API_DEVinCar_Graphql.Models
 {
-    public class MotoTriciclo
+    public class MotoTriciclo : IMotoTriciclo
     {
         [Key]
         public int Id { get; set; }
@@ -32,8 +32,10 @@ namespace API_DEVinCar_Graphql.Models
         [Required(ErrorMessage = "Campo Cor de preenchimento obrigatório")]
         public string Cor { get; set; }
 
+        public bool Disponivel { get; set; }
+
         public MotoTriciclo(double potencia, int rodas, DateTime dataFabricacao,
-            string nome, string placa, double valor, string cor)
+            string nome, string placa, double valor, string cor, bool disponivel = true)
         {
             Potencia = potencia;
             Rodas = rodas;
@@ -43,6 +45,7 @@ namespace API_DEVinCar_Graphql.Models
             Valor = valor;
             Cor = cor;
             Chassi = Guid.NewGuid();
+            Disponivel = disponivel;
         }
     }
 }
