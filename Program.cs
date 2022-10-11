@@ -24,7 +24,9 @@ builder.Services
     .AddGraphQLServer()
     .AddAuthorization()
     .AddQueryType()
-        .AddTypeExtension<VeiculoQueries>();
+        .AddTypeExtension<VeiculoQueries>()
+    .AddMutationType()
+        .AddTypeExtension<VeiculoMutations>();
 
 var app = builder.Build();
 
