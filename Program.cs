@@ -1,31 +1,45 @@
 using API_DEVinCar_Graphql.Data;
+using API_DEVinCar_Graphql.Graphql.Queries;
+using API_DEVinCar_Graphql.Repositories;
+using API_DEVinCar_Graphql.Repositories.Interfaces;
+using API_DEVinCar_Graphql.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DEVInCarContext>(
     opts => opts.UseSqlServer(
     builder.Configuration.GetConnectionString("ServerConnection")));
 
+builder.Services
+    .AddScoped<ICarroRepository, CarroRepository>()
+    .AddScoped<ICamioneteRepository, CamioneteRepository>()
+    .AddScoped<IMotoTricicloRepository, MotoTricicloRepository>()
+    .AddScoped<IListagemService, ListagemService>();
+
+builder.Services
+    .AddGraphQLServer()
+    .AddAuthorization()
+    .AddQueryType()
+        .AddTypeExtension<ListagemQueries>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();
+app.UseRouting();
 
-app.UseAuthorization();
+app.UseWebSockets();
 
-app.MapControllers();
+//app.UseAuthorization();
+
+app.UseEndpoints(endpoint => endpoint.MapGraphQL());
 
 app.Run();
