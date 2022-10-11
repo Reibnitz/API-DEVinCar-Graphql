@@ -18,7 +18,7 @@ namespace API_DEVinCar_Graphql.Services
             _motoRepository = motoRepository;
         }
 
-        public async Task<IEnumerable<Veiculo>> Disponiveis(EVeiculo? tipoVeiculo)
+        public async Task<IEnumerable<Veiculo>> GetDisponiveis(EVeiculo? tipoVeiculo)
         {
             List<Veiculo> veiculos = new();
             List<Carro> carros = new();

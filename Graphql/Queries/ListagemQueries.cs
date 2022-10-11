@@ -18,7 +18,7 @@ namespace API_DEVinCar_Graphql.Graphql.Queries
         [GraphQLDescription("Retorna lista de veículos disponíveis conforme tipoVeiculo. Retorna todos os veículos disponíveis caso não tipoVeiculo seja informado")]
         public async Task<IEnumerable<Veiculo>> GetDisponiveis(EVeiculo? tipoVeiculo)
         {
-            return await _listagemService.Disponiveis(tipoVeiculo);
+            return await _listagemService.GetDisponiveis(tipoVeiculo);
         }
     }
 }
