@@ -5,6 +5,8 @@ namespace API_DEVinCar_Graphql.Services
 {
     public interface IListagemService
     {
-        Task<IEnumerable<Veiculo>> GetDisponiveis(EVeiculo? tipoVeiculo);
+        Task<IEnumerable<Veiculo>> GetAvailable(EVeiculo? tipoVeiculo);
+        Task<IEnumerable<Veiculo>> GetSold(EVeiculo? tipoVeiculo);
+        Task<IEnumerable<Veiculo>> GetAll(EVeiculo? tipoVeiculo);
     }
 }

@@ -7,18 +7,34 @@ namespace API_DEVinCar_Graphql.Graphql.Queries
     [ExtendObjectType(OperationTypeNames.Query)]
     public class ListagemQueries
     {
-        private readonly IListagemService _listagemService;
-
-        public ListagemQueries(IListagemService listagemService)
+        [GraphQLName("Disponiveis")]
+        [GraphQLDescription("Retorna lista de veículos disponíveis")]
+        public async Task<IEnumerable<Veiculo>> GetAvailable(EVeiculo? tipoVeiculo, [Service] IListagemService listagemService)
         {
-            _listagemService = listagemService;
+            return await listagemService.GetAvailable(tipoVeiculo);
         }
 
-        [GraphQLName("listar_disponiveis")]
-        [GraphQLDescription("Retorna lista de veículos disponíveis conforme tipoVeiculo. Retorna todos os veículos disponíveis caso não tipoVeiculo seja informado")]
-        public async Task<IEnumerable<Veiculo>> GetDisponiveis(EVeiculo? tipoVeiculo)
+        [GraphQLName("Vendidos")]
+        [GraphQLDescription("Retorna lista de veículos vendidos")]
+        public async Task<IEnumerable<Veiculo>> GetSold(EVeiculo? tipoVeiculo, [Service] IListagemService listagemService)
         {
-            return await _listagemService.GetDisponiveis(tipoVeiculo);
+            return await listagemService.GetSold(tipoVeiculo);
+        }
+
+        [GraphQLName("MaiorPreco")]
+        [GraphQLDescription("Retorna lista de veículos ordenados pelo maior preço")]
+        public async Task<IEnumerable<Veiculo>> GetHighestPrices(EVeiculo? tipoVeiculo, [Service] IListagemService listagemService)
+        {
+            IEnumerable<Veiculo> veiculos = await listagemService.GetAll(tipoVeiculo);
+            return veiculos.ToList().OrderByDescending(v => v.Valor);
+        }
+
+        [GraphQLName("MenorPreco")]
+        [GraphQLDescription("Retorna lista de veículos odernados pelo menor preço")]
+        public async Task<IEnumerable<Veiculo>> GetLowestPrices(EVeiculo? tipoVeiculo, [Service] IListagemService listagemService)
+        {
+            IEnumerable<Veiculo> veiculos = await listagemService.GetAll(tipoVeiculo);
+            return veiculos.ToList().OrderBy(v => v.Valor);
         }
     }
 }
