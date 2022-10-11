@@ -1,5 +1,5 @@
 using API_DEVinCar_Graphql.Data;
-using API_DEVinCar_Graphql.Graphql.Queries;
+using API_DEVinCar_Graphql.Graphql;
 using API_DEVinCar_Graphql.Repositories;
 using API_DEVinCar_Graphql.Repositories.Interfaces;
 using API_DEVinCar_Graphql.Services;
@@ -24,7 +24,7 @@ builder.Services
     .AddGraphQLServer()
     .AddAuthorization()
     .AddQueryType()
-        .AddTypeExtension<ListagemQueries>();
+        .AddTypeExtension<VeiculoQueries>();
 
 var app = builder.Build();
 

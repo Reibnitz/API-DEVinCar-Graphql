@@ -2,10 +2,10 @@
 using API_DEVinCar_Graphql.Data.Models;
 using API_DEVinCar_Graphql.Services;
 
-namespace API_DEVinCar_Graphql.Graphql.Queries
+namespace API_DEVinCar_Graphql.Graphql
 {
     [ExtendObjectType(OperationTypeNames.Query)]
-    public class ListagemQueries
+    public class VeiculoQueries
     {
         [GraphQLName("Disponiveis")]
         [GraphQLDescription("Retorna lista de veículos disponíveis")]
