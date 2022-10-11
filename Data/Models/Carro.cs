@@ -1,11 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using API_DEVinCar_Graphql.Data.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API_DEVinCar_Graphql.Models
 {
     public class Carro
     {
-        [Key]
-        public int Id { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Campo Potencia é de preenchimento obrigatório")]
         public double Potencia { get; set; }
@@ -15,8 +17,6 @@ namespace API_DEVinCar_Graphql.Models
 
         [Required(ErrorMessage = "Campo Flex de preenchimento obrigatório")]
         public bool Flex { get; set; }
-
-        public Guid Chassi { get; private set; }
 
         [DataType(DataType.DateTime, ErrorMessage = "Formato de data inválido.")]
         [Required(ErrorMessage = "Campo DataFabricacao de preenchimento obrigatório")]
@@ -34,21 +34,27 @@ namespace API_DEVinCar_Graphql.Models
         [Required(ErrorMessage = "Campo Cor de preenchimento obrigatório")]
         public string Cor { get; set; }
 
+        [Required(ErrorMessage = "Campo Disponivel de preenchimento obrigatório")]
         public bool Disponivel { get; set; }
 
-        public Carro(double potencia, int portas, bool flex, DateTime dataFabricacao,
-            string nome, string placa, double valor, string cor, bool disponivel = true)
+        public Guid Chassi { get; private set; } = Guid.NewGuid();
+
+        public static implicit operator Veiculo(Carro c)
         {
-            Potencia = potencia;
-            Portas = portas;
-            Flex = flex;
-            DataFabricacao = dataFabricacao;
-            Nome = nome;
-            Placa = placa;
-            Valor = valor;
-            Cor = cor;
-            Chassi = Guid.NewGuid();
-            Disponivel = disponivel;
+            return new Veiculo
+            {
+                Id = c.Id,
+                Chassi = c.Chassi,
+                DataFabricacao = c.DataFabricacao,
+                Nome = c.Nome,
+                Placa = c.Placa,
+                Valor = c.Valor,
+                Cor = c.Cor,
+                Disponivel = c.Disponivel,
+                Potencia = c.Potencia,
+                Portas = c.Portas,
+                Flex = c.Flex,
+            };
         }
     }
 }
