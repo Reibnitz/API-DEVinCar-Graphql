@@ -7,35 +7,41 @@ namespace API_DEVinCar_Graphql.Data.Seeds
         public static List<MotoTriciclo> Seed = new()
         {
             new MotoTriciclo
-            (
-                potencia: 8.33,
-                rodas: 2,
-                dataFabricacao: new DateTime(2016, 07, 03),
-                nome: "Biz",
-                placa: "ASD-4123",
-                valor: 8900.00,
-                cor: "Azul"
-            ) { Id = 1},
+            {
+                Potencia = 8.33,
+                Rodas = 2,
+                DataFabricacao = new DateTime(2016, 07, 03),
+                Nome = "Biz",
+                Placa = "ASD-4123",
+                Valor = 8900.00,
+                Cor = "Azul",
+                Disponivel = true,
+                Id = Guid.NewGuid()
+            },
             new MotoTriciclo
-            (
-                potencia: 14.9,
-                rodas: 2,
-                dataFabricacao: new DateTime(2018, 10, 09),
-                nome: "CG-160",
-                placa: "FED-5193",
-                valor: 10520.00,
-                cor: "Preto"
-            ) { Id = 2},
+            {
+                Potencia = 14.9,
+                Rodas = 2,
+                DataFabricacao = new DateTime(2018, 10, 09),
+                Nome = "CG-160",
+                Placa = "FED-5193",
+                Valor = 10520.00,
+                Cor = "Preto",
+                Disponivel = true,
+                Id = Guid.NewGuid()
+            },
             new MotoTriciclo
-            (
-                potencia: 21,
-                rodas: 3,
-                dataFabricacao: new DateTime(2017, 01, 07),
-                nome: "Spider",
-                placa: "BSC-9297",
-                valor: 16999.00,
-                cor: "Preto"
-            ) { Id = 3},
+            {
+                Potencia = 21,
+                Rodas = 3,
+                DataFabricacao = new DateTime(2017, 01, 07),
+                Nome = "Spider",
+                Placa = "BSC-9297",
+                Valor = 16999.00,
+                Cor = "Preto",
+                Disponivel = false,
+                Id = Guid.NewGuid()
+            },
         };
     }
 }

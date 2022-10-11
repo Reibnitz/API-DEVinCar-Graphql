@@ -1,4 +1,5 @@
-﻿using API_DEVinCar_Graphql.Models;
+﻿using API_DEVinCar_Graphql.Data.Enums;
+using API_DEVinCar_Graphql.Models;
 
 namespace API_DEVinCar_Graphql.Data.Seeds
 {
@@ -7,41 +8,47 @@ namespace API_DEVinCar_Graphql.Data.Seeds
         public static List<Camionete> Seed = new()
         {
             new Camionete
-            (
-                potencia: 107,
-                portas: 2,
-                tipoCombustivel: ETipoCombustivel.Gasolina,
-                capacidadeCacamba: 844,
-                dataFabricacao: new DateTime(2021, 12, 13),
-                nome: "Strada",
-                placa: "CAM-0397",
-                valor: 109990.00,
-                cor: "Prata"
-            ) { Id = 1},
+            {
+                Potencia = 107,
+                Portas = 2,
+                TipoCombustivel = ECombustivel.Gasolina,
+                CapacidadeCacamba = 844,
+                DataFabricacao = new DateTime(2021, 12, 13),
+                Nome = "Strada",
+                Placa = "CAM-0397",
+                Valor = 109990.00,
+                Cor = "Prata",
+                Disponivel = true,
+                Id = Guid.NewGuid()
+            },
             new Camionete
-            (
-                potencia: 204,
-                portas: 4,
-                tipoCombustivel: ETipoCombustivel.Diesel,
-                capacidadeCacamba: 1570,
-                dataFabricacao: new DateTime(2020, 06, 21),
-                nome: "Hilux",
-                placa: "CAM-0397",
-                valor: 260390.00,
-                cor: "Vermelho"
-            ) { Id = 2},
+            {
+                Potencia = 204,
+                Portas = 4,
+                TipoCombustivel = ECombustivel.Diesel,
+                CapacidadeCacamba = 1570,
+                DataFabricacao = new DateTime(2020, 06, 21),
+                Nome = "Hilux",
+                Placa = "CAM-0397",
+                Valor = 260390.00,
+                Cor = "Vermelho",
+                Disponivel = false,
+                Id = Guid.NewGuid()
+            },
             new Camionete
-            (
-                potencia: 71,
-                portas: 2,
-                tipoCombustivel: ETipoCombustivel.Diesel,
-                capacidadeCacamba: 580,
-                dataFabricacao: new DateTime(2021, 12, 13),
-                nome: "Saveiro",
-                placa: "CAM-0397",
-                valor: 99000.00,
-                cor: "Azul"
-            ) { Id = 3},
+            {
+                Potencia = 71,
+                Portas = 2,
+                TipoCombustivel = ECombustivel.Diesel,
+                CapacidadeCacamba = 580,
+                DataFabricacao = new DateTime(2021, 12, 13),
+                Nome = "Saveiro",
+                Placa = "CAM-0397",
+                Valor = 99000.00,
+                Cor = "Azul",
+                Disponivel = true,
+                Id = Guid.NewGuid()
+            },
         };
     }
 }

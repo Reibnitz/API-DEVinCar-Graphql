@@ -7,38 +7,44 @@ namespace API_DEVinCar_Graphql.Data.Seeds
         public static List<Carro> Seed = new()
         {
             new Carro
-            (
-                potencia: 71,
-                portas: 4,
-                flex: true,
-                dataFabricacao: new DateTime(2022, 05, 13),
-                nome: "Kwid",
-                placa: "ABC-1234",
-                valor: 59999.90,
-                cor: "Vermelho"
-            ) { Id = 1},
+            {
+                Potencia = 71,
+                Portas = 4,
+                Flex = true,
+                DataFabricacao = new DateTime(2022, 05, 13),
+                Nome = "Kwid",
+                Placa = "ABC-1234",
+                Valor = 59999.90,
+                Cor = "Vermelho",
+                Disponivel = false,
+                Id = Guid.NewGuid()
+            },
             new Carro
-            (
-                potencia: 65,
-                portas: 2,
-                flex: true,
-                dataFabricacao: new DateTime(2013, 09, 23),
-                nome: "Uno",
-                placa: "XYZ-6789",
-                valor: 24999.90,
-                cor: "Vermelho"
-            ) { Id = 2},
+            {
+                Potencia = 65,
+                Portas = 2,
+                Flex = true,
+                DataFabricacao = new DateTime(2013, 09, 23),
+                Nome = "Uno",
+                Placa = "XYZ-6789",
+                Valor = 24999.90,
+                Cor = "Vermelho",
+                Disponivel = false,
+                Id = Guid.NewGuid()
+            },
             new Carro
-            (
-                potencia: 71,
-                portas: 4,
-                flex: false,
-                dataFabricacao: new DateTime(2017, 11, 07),
-                nome: "Ka",
-                placa: "AAA-1111",
-                valor: 49999.90,
-                cor: "Preto"
-            ) { Id = 3},
+            {
+                Potencia = 71,
+                Portas = 4,
+                Flex = false,
+                DataFabricacao = new DateTime(2017, 11, 07),
+                Nome = "Ka",
+                Placa = "AAA-1111",
+                Valor = 49999.90,
+                Cor = "Preto",
+                Disponivel = true,
+                Id = Guid.NewGuid()
+            },
         };
     }
 }
