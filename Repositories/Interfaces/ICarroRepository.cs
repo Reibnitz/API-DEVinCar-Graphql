@@ -2,7 +2,7 @@
 
 namespace API_DEVinCar_Graphql.Repositories.Interfaces
 {
-    public interface ICarroRepository : IRepository<Carro>
+    public interface ICarroRepository : IVeiculoRepository<Carro>
     {
     }
 }
