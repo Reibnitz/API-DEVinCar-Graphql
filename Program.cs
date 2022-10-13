@@ -4,13 +4,12 @@ using API_DEVinCar_Graphql.Repositories;
 using API_DEVinCar_Graphql.Repositories.Interfaces;
 using API_DEVinCar_Graphql.Services;
 using API_DEVinCar_Graphql.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
-//builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DEVInCarContext>(opts =>
 {
@@ -20,12 +19,15 @@ builder.Services.AddDbContext<DEVInCarContext>(opts =>
     );
 
 builder.Services
-    .AddTransient<ICarroRepository, CarroRepository>()
-    .AddTransient<ICamioneteRepository, CamioneteRepository>()
-    .AddTransient<IMotoTricicloRepository, MotoTricicloRepository>()
-    .AddTransient<IVendaRepository, VendaRepository>()
-    .AddScoped<IQueriesService, QueriesService>()
-    .AddScoped<IMutationsService, MutationsService>()
+    .AddScoped<ICarroRepository, CarroRepository>()
+    .AddScoped<ICamioneteRepository, CamioneteRepository>()
+    .AddScoped<IMotoTricicloRepository, MotoTricicloRepository>()
+    .AddScoped<IVendaRepository, VendaRepository>()
+    .AddScoped<IUsuarioRepository, UsuarioRepository>()
+    .AddScoped<IUsuarioMutationService, UsuarioMutationService>()
+    .AddScoped<ITokenService, TokenService>()
+    .AddScoped<IVeiculoQueriesService, VeiculoQueriesService>()
+    .AddScoped<IVeiculoMutationsService, VeiculoMutationsService>()
 ;
 
 builder.Services
@@ -35,10 +37,27 @@ builder.Services
         .AddTypeExtension<VeiculoQueries>()
     .AddMutationType()
         .AddTypeExtension<VeiculoMutations>()
+        .AddTypeExtension<LoginMutation>()
     .AddSubscriptionType()
         .AddTypeExtension<VeiculoSubscriptions>()
     .AddInMemorySubscriptions()
 ;
+
+builder.Services
+    .AddAuthorization()
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidIssuer = builder.Configuration.GetSection("TokenSettings").GetValue<string>("Issuer"),
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateIssuerSigningKey = true,
+            ValidAudience = builder.Configuration.GetSection("TokenSettings").GetValue<string>("Audience"),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("TokenSettings").GetValue<string>("Key"))),
+        };
+    });
 
 var app = builder.Build();
 
@@ -52,7 +71,8 @@ app.UseRouting();
 
 app.UseWebSockets();
 
-//app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseEndpoints(endpoint => endpoint.MapGraphQL());
 
