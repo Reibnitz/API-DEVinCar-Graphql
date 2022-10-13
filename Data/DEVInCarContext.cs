@@ -1,4 +1,5 @@
-﻿using API_DEVinCar_Graphql.Data.Seeds;
+﻿using API_DEVinCar_Graphql.Data.Models;
+using API_DEVinCar_Graphql.Data.Seeds;
 using API_DEVinCar_Graphql.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ namespace API_DEVinCar_Graphql.Data
         public DbSet<Carro> Carros { get; set; }
         public DbSet<Camionete> Camionetes { get; set; }
         public DbSet<MotoTriciclo> MotoTriciclos { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
