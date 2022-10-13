@@ -37,7 +37,7 @@ namespace API_DEVinCar_Graphql.Models
         [Required(ErrorMessage = "Campo Disponivel de preenchimento obrigatório")]
         public bool Disponivel { get; set; }
 
-        public Guid Chassi { get; private set; } = Guid.NewGuid();
+        public Guid Chassi { get; set; } = Guid.NewGuid();
 
         public static implicit operator Veiculo(Carro c)
         {
