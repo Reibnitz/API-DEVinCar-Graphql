@@ -15,35 +15,35 @@ namespace API_DEVinCar_Graphql.Repositories
             _context = context;
         }
 
-        public async Task<List<MotoTriciclo>> GetAll()
+        public async Task<List<MotoTriciclo>> GetAllAsync()
         {
             return await _context.MotoTriciclos.ToListAsync();
         }
 
-        public async Task<List<MotoTriciclo>> GetAvailable()
+        public async Task<List<MotoTriciclo>> GetAvailableAsync()
         {
             return await _context.MotoTriciclos.Where(moto => moto.Disponivel == true).ToListAsync();
         }
 
-        public async Task<List<MotoTriciclo>> GetSold()
+        public async Task<List<MotoTriciclo>> GetSoldAsync()
         {
             return await _context.MotoTriciclos.Where(moto => moto.Disponivel == false).ToListAsync();
         }
 
-        public async Task<bool> Add(MotoTriciclo entity)
+        public async Task<MotoTriciclo?> AddAsync(MotoTriciclo entity)
         {
             _context.MotoTriciclos.Add(entity);
             int entriesWritten = await _context.SaveChangesAsync();
 
-            if (entriesWritten == 0)
-                return false;
+            if (entriesWritten != 1)
+                return null;
 
-            return true;
+            return entity;
         }
 
-        public async Task<bool> Sell(Guid id)
+        public async Task<bool> SellAsync(Guid id)
         {
-            MotoTriciclo? motoTriciclo = await GetById(id);
+            MotoTriciclo? motoTriciclo = await GetByIdAsync(id);
             if (motoTriciclo == null)
                 return false;
 
@@ -53,9 +53,9 @@ namespace API_DEVinCar_Graphql.Repositories
             return true;
         }
 
-        public async Task<bool> ChangeColor(Guid id, string color)
+        public async Task<bool> ChangeColorAsync(Guid id, string color)
         {
-            MotoTriciclo? motoTriciclo = await GetById(id);
+            MotoTriciclo? motoTriciclo = await GetByIdAsync(id);
             if (motoTriciclo == null)
                 return false;
 
@@ -65,9 +65,9 @@ namespace API_DEVinCar_Graphql.Repositories
             return true;
         }
 
-        public async Task<bool> ChangePrice(Guid id, double price)
+        public async Task<bool> ChangePriceAsync(Guid id, double price)
         {
-            MotoTriciclo? motoTriciclo = await GetById(id);
+            MotoTriciclo? motoTriciclo = await GetByIdAsync(id);
             if (motoTriciclo == null)
                 return false;
 
@@ -77,9 +77,20 @@ namespace API_DEVinCar_Graphql.Repositories
             return true;
         }
 
-        private async Task<MotoTriciclo?> GetById(Guid id)
+        public async Task<MotoTriciclo?> GetByIdAsync(Guid id)
         {
             return await _context.MotoTriciclos.FirstOrDefaultAsync(mt => mt.Id == id);
+        }
+
+        public async Task<bool> UpdateAsync(MotoTriciclo entity)
+        {
+            _context.MotoTriciclos.Update(entity);
+            int entriesWritten = await _context.SaveChangesAsync();
+
+            if (entriesWritten != 1)
+                return false;
+
+            return true;
         }
     }
 }

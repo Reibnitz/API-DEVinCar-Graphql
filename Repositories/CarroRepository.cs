@@ -15,35 +15,35 @@ namespace API_DEVinCar_Graphql.Repositories
             _context = context;
         }
 
-        public async Task<List<Carro>> GetAll()
+        public async Task<List<Carro>> GetAllAsync()
         {
             return await _context.Carros.ToListAsync();
         }
 
-        public async Task<List<Carro>> GetAvailable()
+        public async Task<List<Carro>> GetAvailableAsync()
         {
             return await _context.Carros.Where(carro => carro.Disponivel == true).ToListAsync();
         }
 
-        public async Task<List<Carro>> GetSold()
+        public async Task<List<Carro>> GetSoldAsync()
         {
             return await _context.Carros.Where(carro => carro.Disponivel == false).ToListAsync();
         }
 
-        public async Task<bool> Add(Carro entity)
+        public async Task<Carro?> AddAsync(Carro entity)
         {
             _context.Carros.Add(entity);
             int entriesWritten = await _context.SaveChangesAsync();
 
-            if (entriesWritten == 0)
-                return false;
+            if (entriesWritten != 1)
+                return null;
 
-            return true;
+            return entity;
         }
 
-        public async Task<bool> ChangeColor(Guid id, string color)
+        public async Task<bool> ChangeColorAsync(Guid id, string color)
         {
-            Carro? carro = await GetById(id);
+            Carro? carro = await GetByIdAsync(id);
             if (carro == null)
                 return false;
 
@@ -53,9 +53,9 @@ namespace API_DEVinCar_Graphql.Repositories
             return true;
         }
 
-        public async Task<bool> ChangePrice(Guid id, double price)
+        public async Task<bool> ChangePriceAsync(Guid id, double price)
         {
-            Carro? carro = await GetById(id);
+            Carro? carro = await GetByIdAsync(id);
             if (carro == null)
                 return false;
 
@@ -65,9 +65,9 @@ namespace API_DEVinCar_Graphql.Repositories
             return true;
         }
 
-        public async Task<bool> Sell(Guid id)
+        public async Task<bool> SellAsync(Guid id)
         {
-            Carro? carro = await GetById(id);
+            Carro? carro = await GetByIdAsync(id);
             if (carro == null)
                 return false;
 
@@ -77,9 +77,20 @@ namespace API_DEVinCar_Graphql.Repositories
             return true;
         }
 
-        private async Task<Carro?> GetById(Guid id)
+        public async Task<Carro?> GetByIdAsync(Guid id)
         {
             return await _context.Carros.FirstOrDefaultAsync(c => c.Id == id);
+        }
+
+        public async Task<bool> UpdateAsync(Carro entity)
+        {
+            _context.Carros.Update(entity);
+            int entriesWritten = await _context.SaveChangesAsync();
+
+            if (entriesWritten != 1)
+                return false;
+
+            return true;
         }
     }
 }
