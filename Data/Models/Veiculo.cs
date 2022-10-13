@@ -1,5 +1,6 @@
 ﻿using API_DEVinCar_Graphql.Data.Enums;
 using API_DEVinCar_Graphql.Models;
+using HotChocolate.AspNetCore.Authorization;
 using System.ComponentModel.DataAnnotations;
 
 namespace API_DEVinCar_Graphql.Data.Models
@@ -7,9 +8,11 @@ namespace API_DEVinCar_Graphql.Data.Models
     public class Veiculo
     {
         public Guid Id { get; set; }
+        [Authorize]
         public Guid Chassi { get; set; }
         public DateTime DataFabricacao { get; set; }
         public string Nome { get; set; }
+        [Authorize]
         public string Placa { get; set; }
         public double Valor { get; set; }
         public string Cor { get; set; }
