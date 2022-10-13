@@ -4,6 +4,7 @@ using API_DEVinCar_Graphql.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_DEVinCar_Graphql.Migrations
 {
     [DbContext(typeof(DEVInCarContext))]
-    partial class DEVInCarContextModelSnapshot : ModelSnapshot
+    [Migration("20221012192153_AddTableVendas")]
+    partial class AddTableVendas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,9 +36,6 @@ namespace API_DEVinCar_Graphql.Migrations
 
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("TipoVeiculo")
-                        .HasColumnType("int");
 
                     b.Property<Guid>("VeiculoId")
                         .HasColumnType("uniqueidentifier");
@@ -95,9 +94,9 @@ namespace API_DEVinCar_Graphql.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c53f421e-451b-4f34-a85b-4fe0ae871786"),
+                            Id = new Guid("ae2facd6-a5d9-49a9-83ef-f99050161de9"),
                             CapacidadeCacamba = 844,
-                            Chassi = new Guid("f5d09161-665a-4bc7-b814-e944f97f8eda"),
+                            Chassi = new Guid("550f4814-3e3c-43d8-8768-2d18c0da334b"),
                             Cor = "Prata",
                             DataFabricacao = new DateTime(2021, 12, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = true,
@@ -110,9 +109,9 @@ namespace API_DEVinCar_Graphql.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ae762e66-5c35-4731-82b9-ba4ac374c3c3"),
+                            Id = new Guid("691faf5d-4408-4ff9-9ba7-4b006b32a7fd"),
                             CapacidadeCacamba = 1570,
-                            Chassi = new Guid("4720aa28-ad3f-4edb-a58c-b289eb20cc55"),
+                            Chassi = new Guid("1ff4df30-5bff-4489-844a-af644717eef7"),
                             Cor = "Vermelho",
                             DataFabricacao = new DateTime(2020, 6, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = false,
@@ -125,9 +124,9 @@ namespace API_DEVinCar_Graphql.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7f9bec68-a0ac-4be4-9162-a0aeee2f9c2e"),
+                            Id = new Guid("c4fd12d2-7947-4c7a-a0b6-b19adc02ea36"),
                             CapacidadeCacamba = 580,
-                            Chassi = new Guid("ee09ae16-ffc1-4153-a963-1bf115288500"),
+                            Chassi = new Guid("893af09e-fdb0-4f98-af7f-b50ae1026a93"),
                             Cor = "Azul",
                             DataFabricacao = new DateTime(2021, 12, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = true,
@@ -186,8 +185,8 @@ namespace API_DEVinCar_Graphql.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("97a3bab5-23c2-4d56-905c-73e7272077e7"),
-                            Chassi = new Guid("87c34833-142e-4d40-9ca8-d9d27a466b4c"),
+                            Id = new Guid("182916d4-7aec-404d-8cc3-cb9165761018"),
+                            Chassi = new Guid("b29819e9-71d6-49c1-ae81-40efa8e8366b"),
                             Cor = "Vermelho",
                             DataFabricacao = new DateTime(2022, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = false,
@@ -200,8 +199,8 @@ namespace API_DEVinCar_Graphql.Migrations
                         },
                         new
                         {
-                            Id = new Guid("340bedd5-45f6-4f22-9860-9e977870b987"),
-                            Chassi = new Guid("4f3b5f27-f9cb-4752-a8b3-34dfc75dddda"),
+                            Id = new Guid("b1575318-11ee-4fd4-97e2-d936802eadbc"),
+                            Chassi = new Guid("f0a8141d-fc5f-4d91-a4af-d66b80a5b0b4"),
                             Cor = "Vermelho",
                             DataFabricacao = new DateTime(2013, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = false,
@@ -214,8 +213,8 @@ namespace API_DEVinCar_Graphql.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c17ab273-351e-464c-b7f6-c158a1ecd9b2"),
-                            Chassi = new Guid("03a2e6ed-36f4-420e-952f-d105bb2ec47c"),
+                            Id = new Guid("b9938358-60ab-4395-ba6e-c4f3a86e6720"),
+                            Chassi = new Guid("10a365e6-5608-4e70-9f3b-af60455f1d40"),
                             Cor = "Preto",
                             DataFabricacao = new DateTime(2017, 11, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = true,
@@ -271,8 +270,8 @@ namespace API_DEVinCar_Graphql.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("638290e2-fea7-421f-bb79-6fb2dbce50d7"),
-                            Chassi = new Guid("8c27a3db-c322-43e5-9c54-7d8861a8bd3a"),
+                            Id = new Guid("8a3ddf35-5538-48e6-ab0f-6ae4f7653f54"),
+                            Chassi = new Guid("41505bca-4c51-49bb-8caa-73836e08140d"),
                             Cor = "Azul",
                             DataFabricacao = new DateTime(2016, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = true,
@@ -284,8 +283,8 @@ namespace API_DEVinCar_Graphql.Migrations
                         },
                         new
                         {
-                            Id = new Guid("064eb80f-9837-408a-8b19-6f13ceec28b8"),
-                            Chassi = new Guid("ab91645f-01cf-4af0-a1a1-ee87895a8d11"),
+                            Id = new Guid("172d9b02-e41c-4cb2-95f9-a891d5f6dc84"),
+                            Chassi = new Guid("4546550b-f44e-4e4e-923d-d79a63d31549"),
                             Cor = "Preto",
                             DataFabricacao = new DateTime(2018, 10, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = true,
@@ -297,8 +296,8 @@ namespace API_DEVinCar_Graphql.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a56c8cae-1f7e-4f6e-980a-b6c1e63efdea"),
-                            Chassi = new Guid("07b09595-bef1-4dbf-8949-59f557df2d8a"),
+                            Id = new Guid("eabc2dcf-9646-4120-bd55-5063fc54cb47"),
+                            Chassi = new Guid("0bc5474d-ea03-4b26-b2be-8abeb17a441f"),
                             Cor = "Preto",
                             DataFabricacao = new DateTime(2017, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = false,
