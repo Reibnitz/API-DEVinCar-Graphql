@@ -3,22 +3,30 @@ using API_DEVinCar_Graphql.Graphql;
 using API_DEVinCar_Graphql.Repositories;
 using API_DEVinCar_Graphql.Repositories.Interfaces;
 using API_DEVinCar_Graphql.Services;
+using API_DEVinCar_Graphql.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DEVInCarContext>(
-    opts => opts.UseSqlServer(
-    builder.Configuration.GetConnectionString("ServerConnection")));
+builder.Services.AddDbContext<DEVInCarContext>(opts =>
+{
+    opts.UseSqlServer(builder.Configuration.GetConnectionString("ServerConnection"));
+    opts.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+}
+    );
 
 builder.Services
-    .AddScoped<ICarroRepository, CarroRepository>()
-    .AddScoped<ICamioneteRepository, CamioneteRepository>()
-    .AddScoped<IMotoTricicloRepository, MotoTricicloRepository>()
-    .AddScoped<IListagemService, ListagemService>();
+    .AddTransient<ICarroRepository, CarroRepository>()
+    .AddTransient<ICamioneteRepository, CamioneteRepository>()
+    .AddTransient<IMotoTricicloRepository, MotoTricicloRepository>()
+    .AddTransient<IVendaRepository, VendaRepository>()
+    .AddScoped<IQueriesService, QueriesService>()
+    .AddScoped<IMutationsService, MutationsService>()
+;
 
 builder.Services
     .AddGraphQLServer()
@@ -26,7 +34,11 @@ builder.Services
     .AddQueryType()
         .AddTypeExtension<VeiculoQueries>()
     .AddMutationType()
-        .AddTypeExtension<VeiculoMutations>();
+        .AddTypeExtension<VeiculoMutations>()
+    .AddSubscriptionType()
+        .AddTypeExtension<VeiculoSubscriptions>()
+    .AddInMemorySubscriptions()
+;
 
 var app = builder.Build();
 
