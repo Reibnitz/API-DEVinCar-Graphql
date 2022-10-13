@@ -1,13 +1,12 @@
 ﻿using API_DEVinCar_Graphql.Data.Enums;
 using API_DEVinCar_Graphql.Data.Models;
 using API_DEVinCar_Graphql.Models;
-using API_DEVinCar_Graphql.Repositories;
 using API_DEVinCar_Graphql.Repositories.Interfaces;
 using API_DEVinCar_Graphql.Services.Interfaces;
 
 namespace API_DEVinCar_Graphql.Services
 {
-    public class MutationsService : IMutationsService
+    public class VeiculoMutationsService : IVeiculoMutationsService
     {
         private readonly ICarroRepository _carroRepository;
         private readonly ICamioneteRepository _camioneteRepository;
@@ -15,7 +14,7 @@ namespace API_DEVinCar_Graphql.Services
         private readonly IVendaRepository _vendaRepository;
         private EVeiculo tipoVeiculo;
 
-        public MutationsService(ICarroRepository carroRepository, ICamioneteRepository camioneteRepository,
+        public VeiculoMutationsService(ICarroRepository carroRepository, ICamioneteRepository camioneteRepository,
             IMotoTricicloRepository motoRepository, IVendaRepository vendaRepository)
         {
             _carroRepository = carroRepository;

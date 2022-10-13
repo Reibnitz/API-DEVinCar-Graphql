@@ -3,7 +3,7 @@ using API_DEVinCar_Graphql.Models;
 
 namespace API_DEVinCar_Graphql.Services.Interfaces
 {
-    public interface IMutationsService
+    public interface IVeiculoMutationsService
     {
         Task<bool> ChangeColourAsync(Guid veiculoId, string colour);
         Task<bool> ChangePriceAsync(Guid veiculoId, double price);

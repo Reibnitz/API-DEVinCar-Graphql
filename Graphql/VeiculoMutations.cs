@@ -12,7 +12,7 @@ namespace API_DEVinCar_Graphql.Graphql
     {
         [GraphQLName("VenderVeiculo")]
         [GraphQLDescription("Retorna resultado da solicitação de venda")]
-        public async Task<Venda?> VenderVeiculo(Guid veiculoId, string cpf, DateTime data, [Service] IMutationsService service, [Service] ITopicEventSender eventSender)
+        public async Task<Venda?> VenderVeiculo(Guid veiculoId, string cpf, DateTime data, [Service] IVeiculoMutationsService service, [Service] ITopicEventSender eventSender)
         {
             Venda result = await service.SellVehicle(veiculoId, cpf, data);
 
@@ -27,7 +27,7 @@ namespace API_DEVinCar_Graphql.Graphql
 
         [GraphQLName("AlterarCor")]
         [GraphQLDescription("Retorna resultado da solicitação de troca de cor")]
-        public async Task<string> AlterarCor(Guid veiculoId, string cor, [Service] IMutationsService service)
+        public async Task<string> AlterarCor(Guid veiculoId, string cor, [Service] IVeiculoMutationsService service)
         {
             bool result = await service.ChangeColourAsync(veiculoId, cor);
 
@@ -36,7 +36,7 @@ namespace API_DEVinCar_Graphql.Graphql
 
         [GraphQLName("AlterarValor")]
         [GraphQLDescription("Retorna resultado da solicitação de troca de valor")]
-        public async Task<string> AlterarValor(Guid veiculoId, double valor, [Service] IMutationsService service)
+        public async Task<string> AlterarValor(Guid veiculoId, double valor, [Service] IVeiculoMutationsService service)
         {
             bool result = await service.ChangePriceAsync(veiculoId, valor);
 
@@ -45,7 +45,7 @@ namespace API_DEVinCar_Graphql.Graphql
 
         [GraphQLName("NovoCarro")]
         [GraphQLDescription("Retorna resultado da inclusão de novo veículo")]
-        public async Task<Carro?> NovoVeiculo(CreateCarroDto carro, [Service] IMutationsService service, [Service] ITopicEventSender eventSender)
+        public async Task<Carro?> NovoVeiculo(CreateCarroDto carro, [Service] IVeiculoMutationsService service, [Service] ITopicEventSender eventSender)
         {
             Veiculo? result = await service.CreateVehicleAsync(carro);
 
@@ -60,7 +60,7 @@ namespace API_DEVinCar_Graphql.Graphql
 
         [GraphQLName("NovaCamionete")]
         [GraphQLDescription("Retorna resultado da inclusão de novo veículo")]
-        public async Task<Camionete?> NovoVeiculo(CreateCamioneteDto camionete, [Service] IMutationsService service, [Service] ITopicEventSender eventSender)
+        public async Task<Camionete?> NovoVeiculo(CreateCamioneteDto camionete, [Service] IVeiculoMutationsService service, [Service] ITopicEventSender eventSender)
         {
             Veiculo? result = await service.CreateVehicleAsync(camionete);
 
@@ -75,7 +75,7 @@ namespace API_DEVinCar_Graphql.Graphql
 
         [GraphQLName("NovaMotoTriciclo")]
         [GraphQLDescription("Retorna resultado da inclusão de novo veículo")]
-        public async Task<MotoTriciclo?> NovoVeiculo(CreateMotoTricicloDto motoTriciclo, [Service] IMutationsService service, [Service] ITopicEventSender eventSender)
+        public async Task<MotoTriciclo?> NovoVeiculo(CreateMotoTricicloDto motoTriciclo, [Service] IVeiculoMutationsService service, [Service] ITopicEventSender eventSender)
         {
             Veiculo? result = await service.CreateVehicleAsync(motoTriciclo);
 

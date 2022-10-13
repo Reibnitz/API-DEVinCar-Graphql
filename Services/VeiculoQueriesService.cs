@@ -6,13 +6,13 @@ using API_DEVinCar_Graphql.Services.Interfaces;
 
 namespace API_DEVinCar_Graphql.Services
 {
-    public class QueriesService : IQueriesService
+    public class VeiculoQueriesService : IVeiculoQueriesService
     {
         private readonly ICamioneteRepository _camioneteRepository;
         private readonly ICarroRepository _carroRepository;
         private readonly IMotoTricicloRepository _motoRepository;
 
-        public QueriesService(ICamioneteRepository camioneteRepository, ICarroRepository carroRepository, IMotoTricicloRepository motoRepository)
+        public VeiculoQueriesService(ICamioneteRepository camioneteRepository, ICarroRepository carroRepository, IMotoTricicloRepository motoRepository)
         {
             _camioneteRepository = camioneteRepository;
             _carroRepository = carroRepository;
