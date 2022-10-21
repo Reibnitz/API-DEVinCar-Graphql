@@ -41,7 +41,7 @@ namespace API_DEVinCar_Graphql.Repositories
             return entity;
         }
 
-        public async Task<bool> SellAsync(Guid id)
+        public async Task<bool> SellAsync(int id)
         {
             MotoTriciclo? motoTriciclo = await GetByIdAsync(id);
             if (motoTriciclo == null)
@@ -53,7 +53,7 @@ namespace API_DEVinCar_Graphql.Repositories
             return true;
         }
 
-        public async Task<bool> ChangeColorAsync(Guid id, string color)
+        public async Task<bool> ChangeColorAsync(int id, string color)
         {
             MotoTriciclo? motoTriciclo = await GetByIdAsync(id);
             if (motoTriciclo == null)
@@ -65,7 +65,7 @@ namespace API_DEVinCar_Graphql.Repositories
             return true;
         }
 
-        public async Task<bool> ChangePriceAsync(Guid id, double price)
+        public async Task<bool> ChangePriceAsync(int id, double price)
         {
             MotoTriciclo? motoTriciclo = await GetByIdAsync(id);
             if (motoTriciclo == null)
@@ -77,7 +77,7 @@ namespace API_DEVinCar_Graphql.Repositories
             return true;
         }
 
-        public async Task<MotoTriciclo?> GetByIdAsync(Guid id)
+        public async Task<MotoTriciclo?> GetByIdAsync(int id)
         {
             return await _context.MotoTriciclos.FirstOrDefaultAsync(mt => mt.Id == id);
         }

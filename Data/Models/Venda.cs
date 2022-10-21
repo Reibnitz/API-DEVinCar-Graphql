@@ -7,10 +7,10 @@ namespace API_DEVinCar_Graphql.Data.Models
     public class Venda
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Campo VeiculoId de preenchimento obrigatório")]
-        public Guid VeiculoId { get; set; }
+        public string VeiculoId { get; set; }
 
         [Required(ErrorMessage = "Campo Cpf de preenchimento obrigatório")]
         public string Cpf { get; set; }

@@ -3,7 +3,7 @@
     public interface IRepository<T>
     {
         Task<List<T>> GetAllAsync();
-        Task<T?> GetByIdAsync(Guid id);
+        Task<T?> GetByIdAsync(int id);
         Task<T?> AddAsync(T entity);
         Task<bool> UpdateAsync(T entity);
     }

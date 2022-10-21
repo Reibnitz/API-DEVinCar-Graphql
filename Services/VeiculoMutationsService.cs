@@ -1,8 +1,10 @@
-﻿using API_DEVinCar_Graphql.Data.Enums;
+﻿using API_DEVinCar_Graphql.Data.Dtos;
+using API_DEVinCar_Graphql.Data.Enums;
 using API_DEVinCar_Graphql.Data.Models;
 using API_DEVinCar_Graphql.Models;
 using API_DEVinCar_Graphql.Repositories.Interfaces;
 using API_DEVinCar_Graphql.Services.Interfaces;
+using GreenDonut;
 
 namespace API_DEVinCar_Graphql.Services
 {
@@ -23,7 +25,7 @@ namespace API_DEVinCar_Graphql.Services
             _vendaRepository = vendaRepository;
         }
 
-        public async Task<bool> ChangeColourAsync(Guid veiculoId, string colour)
+        public async Task<bool> ChangeColourAsync(string veiculoId, string colour)
         {
             Veiculo? veiculo = await SearchDbAsync(veiculoId);
             if (veiculo == null)
@@ -33,7 +35,7 @@ namespace API_DEVinCar_Graphql.Services
             return await UpdateDbAsync(veiculo);
         }
 
-        public async Task<bool> ChangePriceAsync(Guid veiculoId, double price)
+        public async Task<bool> ChangePriceAsync(string veiculoId, double price)
         {
             Veiculo? veiculo = await SearchDbAsync(veiculoId);
             if (veiculo == null)
@@ -43,7 +45,7 @@ namespace API_DEVinCar_Graphql.Services
             return await UpdateDbAsync(veiculo);
         }
 
-        public async Task<Venda?> SellVehicle(Guid veiculoId, string cpf, DateTime data)
+        public async Task<VendaViewModel?> SellVehicle(string veiculoId, string cpf, DateTime data)
         {
             Veiculo? veiculo = await SearchDbAsync(veiculoId);
             if (veiculo == null || veiculo.Disponivel == false)
@@ -55,45 +57,44 @@ namespace API_DEVinCar_Graphql.Services
             EVeiculoVendido tipo = (EVeiculoVendido)tipoVeiculo;
 
             Venda venda = new() { Cpf = cpf, Data = data, VeiculoId = veiculoId, TipoVeiculo = tipo };
-            return await _vendaRepository.AddAsync(venda);
+            await _vendaRepository.AddAsync(venda);
+
+            return new VendaViewModel() { Venda = venda, Veiculo = (VeiculoSubscriptionViewModel) veiculo };
         }
 
-        public async Task<Carro?> CreateVehicleAsync(Carro carro)
+        public async Task<Veiculo?> CreateVehicleAsync(Carro carro)
         {
-            return await _carroRepository.AddAsync(carro);
+            Veiculo? result = await _carroRepository.AddAsync(carro);
+            return result;
         }
 
-        public async Task<Camionete?> CreateVehicleAsync(Camionete camionete)
+        public async Task<Veiculo?> CreateVehicleAsync(Camionete camionete)
         {
             return await _camioneteRepository.AddAsync(camionete);
         }
 
-        public async Task<MotoTriciclo?> CreateVehicleAsync(MotoTriciclo moto)
+        public async Task<Veiculo?> CreateVehicleAsync(MotoTriciclo moto)
         {
             return await _motoRepository.AddAsync(moto);
         }
 
-        private async Task<Veiculo?> SearchDbAsync(Guid veiculoId)
+        private async Task<Veiculo?> SearchDbAsync(string veiculoId)
         {
-            Carro? carro = await _carroRepository.GetByIdAsync(veiculoId);
-            if (carro != null)
-            {
-                tipoVeiculo = EVeiculo.Carro;
-                return carro;
-            }
+            string subid = veiculoId.Substring(4);
+            int id = int.Parse(subid);
 
-            Camionete? camionete = await _camioneteRepository.GetByIdAsync(veiculoId);
-            if (camionete != null)
+            switch (veiculoId)
             {
-                tipoVeiculo = EVeiculo.Camionete;
-                return camionete;
-            }
+                case { } when veiculoId.StartsWith("CAR"):
+                    tipoVeiculo = EVeiculo.Carro;
+                    return await _carroRepository.GetByIdAsync(id);
 
-            MotoTriciclo? moto = await _motoRepository.GetByIdAsync(veiculoId);
-            if (moto != null)
-            {
-                tipoVeiculo = EVeiculo.MotoTriciclo;
-                return moto;
+                case { } when veiculoId.StartsWith("CAM"):
+                    tipoVeiculo = EVeiculo.Camionete;
+                    return await _camioneteRepository.GetByIdAsync(id);
+                case { } when veiculoId.StartsWith("MOT"):
+                    tipoVeiculo = EVeiculo.MotoTriciclo;
+                    return await _motoRepository.GetByIdAsync(id);
             }
 
             return null;
@@ -103,15 +104,15 @@ namespace API_DEVinCar_Graphql.Services
         {
             bool result = false;
 
-            switch (tipoVeiculo)
+            switch (veiculo.Id)
             {
-                case EVeiculo.Carro:
+                case { } when veiculo.Id.StartsWith("CAR"):
                     result = await _carroRepository.UpdateAsync((Carro)veiculo!);
                     break;
-                case EVeiculo.Camionete:
+                case { } when veiculo.Id.StartsWith("CAM"):
                     result = await _camioneteRepository.UpdateAsync((Camionete)veiculo!);
                     break;
-                case EVeiculo.MotoTriciclo:
+                case { } when veiculo.Id.StartsWith("MOT"):
                     result = await _motoRepository.UpdateAsync((MotoTriciclo)veiculo!);
                     break;
             }

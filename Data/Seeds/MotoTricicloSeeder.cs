@@ -16,7 +16,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 Valor = 8900.00,
                 Cor = "Azul",
                 Disponivel = true,
-                Id = Guid.NewGuid()
+                Id = 1
             },
             new MotoTriciclo
             {
@@ -28,7 +28,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 Valor = 10520.00,
                 Cor = "Preto",
                 Disponivel = true,
-                Id = Guid.NewGuid()
+                Id = 2
             },
             new MotoTriciclo
             {
@@ -40,7 +40,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 Valor = 16999.00,
                 Cor = "Preto",
                 Disponivel = false,
-                Id = Guid.NewGuid()
+                Id = 3
             },
         };
     }

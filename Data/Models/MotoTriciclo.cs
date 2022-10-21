@@ -7,7 +7,7 @@ namespace API_DEVinCar_Graphql.Models
     public class MotoTriciclo
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Campo Potencia de preenchimento obrigatório")]
         public double Potencia { get; set; }
@@ -38,9 +38,11 @@ namespace API_DEVinCar_Graphql.Models
 
         public static implicit operator Veiculo(MotoTriciclo mt)
         {
+            string id = $"MOT_{mt.Id.ToString("D6")}";
+
             return new Veiculo
             {
-                Id = mt.Id,
+                Id = id,
                 Chassi = mt.Chassi,
                 DataFabricacao = mt.DataFabricacao,
                 Nome = mt.Nome,

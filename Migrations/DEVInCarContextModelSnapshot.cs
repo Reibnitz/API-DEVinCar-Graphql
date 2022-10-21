@@ -65,9 +65,11 @@ namespace API_DEVinCar_Graphql.Migrations
 
             modelBuilder.Entity("API_DEVinCar_Graphql.Data.Models.Venda", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Cpf")
                         .IsRequired()
@@ -79,8 +81,9 @@ namespace API_DEVinCar_Graphql.Migrations
                     b.Property<int>("TipoVeiculo")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("VeiculoId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("VeiculoId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -89,9 +92,11 @@ namespace API_DEVinCar_Graphql.Migrations
 
             modelBuilder.Entity("API_DEVinCar_Graphql.Models.Camionete", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CapacidadeCacamba")
                         .HasColumnType("int");
@@ -136,9 +141,9 @@ namespace API_DEVinCar_Graphql.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("618a7c35-d24b-4abb-a7f0-ab817f4b0b4f"),
+                            Id = 1,
                             CapacidadeCacamba = 844,
-                            Chassi = new Guid("7235ccf6-3d11-43cd-a1c0-3fb1b0a5457a"),
+                            Chassi = new Guid("84ef5d8a-e9d0-4383-b3cd-aaf4664a82be"),
                             Cor = "Prata",
                             DataFabricacao = new DateTime(2021, 12, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = true,
@@ -151,9 +156,9 @@ namespace API_DEVinCar_Graphql.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0a06a528-b0d4-478f-9e46-8fbdcf968656"),
+                            Id = 2,
                             CapacidadeCacamba = 1570,
-                            Chassi = new Guid("57cc67e5-8d02-4f59-bb56-fea7c3234578"),
+                            Chassi = new Guid("a3dc3c2b-5a73-41c5-8a00-4125ce3e47e3"),
                             Cor = "Vermelho",
                             DataFabricacao = new DateTime(2020, 6, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = false,
@@ -166,9 +171,9 @@ namespace API_DEVinCar_Graphql.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6ddebc97-c982-42ec-b4a7-595c5e2c2780"),
+                            Id = 3,
                             CapacidadeCacamba = 580,
-                            Chassi = new Guid("9a2cb7aa-b622-4d7e-83b2-a269e93fb282"),
+                            Chassi = new Guid("8be076ae-d989-4d60-9612-5791395ac969"),
                             Cor = "Azul",
                             DataFabricacao = new DateTime(2021, 12, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = true,
@@ -183,9 +188,11 @@ namespace API_DEVinCar_Graphql.Migrations
 
             modelBuilder.Entity("API_DEVinCar_Graphql.Models.Carro", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<Guid>("Chassi")
                         .HasColumnType("uniqueidentifier");
@@ -227,8 +234,8 @@ namespace API_DEVinCar_Graphql.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e3237070-74bb-4f97-b2e1-393d088ee5e6"),
-                            Chassi = new Guid("cb2f670a-b60e-44a6-a201-8479ca22703e"),
+                            Id = 1,
+                            Chassi = new Guid("bdacb84e-8a29-47db-a0fa-f7c6dd2c2db4"),
                             Cor = "Vermelho",
                             DataFabricacao = new DateTime(2022, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = false,
@@ -241,8 +248,8 @@ namespace API_DEVinCar_Graphql.Migrations
                         },
                         new
                         {
-                            Id = new Guid("87908bb1-babc-4962-95c8-cd7f3567cf40"),
-                            Chassi = new Guid("95cf1da5-f23b-41f4-9e66-dd882b3576a0"),
+                            Id = 2,
+                            Chassi = new Guid("5fcceea7-8346-4927-8409-06a596433f4b"),
                             Cor = "Vermelho",
                             DataFabricacao = new DateTime(2013, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = false,
@@ -255,8 +262,8 @@ namespace API_DEVinCar_Graphql.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2e01ffcc-45d8-403b-a9cc-479759c97863"),
-                            Chassi = new Guid("88fb13f8-3ece-4557-ac90-a5517b39a825"),
+                            Id = 3,
+                            Chassi = new Guid("f8992d7a-82e8-4525-a835-9bade808d198"),
                             Cor = "Preto",
                             DataFabricacao = new DateTime(2017, 11, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = true,
@@ -271,9 +278,11 @@ namespace API_DEVinCar_Graphql.Migrations
 
             modelBuilder.Entity("API_DEVinCar_Graphql.Models.MotoTriciclo", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<Guid>("Chassi")
                         .HasColumnType("uniqueidentifier");
@@ -312,8 +321,8 @@ namespace API_DEVinCar_Graphql.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e7eb6563-8ca1-446d-9e3b-28617196fec5"),
-                            Chassi = new Guid("3ea9c277-4e2c-4d0e-9079-bd735a094d7e"),
+                            Id = 1,
+                            Chassi = new Guid("287f00e6-ea6e-4f37-a9ea-0936f6d75d7d"),
                             Cor = "Azul",
                             DataFabricacao = new DateTime(2016, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = true,
@@ -325,8 +334,8 @@ namespace API_DEVinCar_Graphql.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1b263804-998e-44cf-a818-6b376d6cfedc"),
-                            Chassi = new Guid("7b16cf57-91c0-4be3-a8ca-f93ecda23832"),
+                            Id = 2,
+                            Chassi = new Guid("f7dd0745-66f0-4e75-91f9-33b01c24d5a0"),
                             Cor = "Preto",
                             DataFabricacao = new DateTime(2018, 10, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = true,
@@ -338,8 +347,8 @@ namespace API_DEVinCar_Graphql.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5d6b5502-a08e-48db-8057-b635ba5cf400"),
-                            Chassi = new Guid("89e26b63-660f-44b1-a620-9b2247df0a4b"),
+                            Id = 3,
+                            Chassi = new Guid("97068bbc-fdee-4740-8ebe-ae56ef5dae63"),
                             Cor = "Preto",
                             DataFabricacao = new DateTime(2017, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disponivel = false,

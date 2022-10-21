@@ -1,4 +1,5 @@
-﻿using API_DEVinCar_Graphql.Data.Enums;
+﻿using API_DEVinCar_Graphql.Data.Dtos;
+using API_DEVinCar_Graphql.Data.Enums;
 using API_DEVinCar_Graphql.Data.Models;
 
 namespace API_DEVinCar_Graphql.Graphql
@@ -9,7 +10,7 @@ namespace API_DEVinCar_Graphql.Graphql
         [GraphQLName("TipoVeiculoVendido")]
         [GraphQLDescription("Retorna veículo vendido filtrado por tipo")]
         [Subscribe]
-        public Venda TipoVeiculoVendido([Topic] EVeiculoVendido tipoVeiculo, [EventMessage] Venda venda)
+        public VendaViewModel TipoVeiculoVendido([Topic] EVeiculoVendido tipoVeiculo, [EventMessage] VendaViewModel venda)
         {
             return venda;
         }
@@ -17,7 +18,7 @@ namespace API_DEVinCar_Graphql.Graphql
         [GraphQLName("VeiculoVendido")]
         [GraphQLDescription("Retorna veículo vendido")]
         [Subscribe]
-        public Venda VeiculoVendido([EventMessage] Venda venda)
+        public VendaViewModel VeiculoVendido([EventMessage] VendaViewModel venda)
         {
             return venda;
         }
@@ -25,17 +26,17 @@ namespace API_DEVinCar_Graphql.Graphql
         [GraphQLName("TipoVeiculoAdicionado")]
         [GraphQLDescription("Retorna veículo adicionado filtrado por tipo")]
         [Subscribe]
-        public Veiculo TipoVeiculoAdicionado([Topic] EVeiculo tipoVeiculo, [EventMessage] Veiculo veiculo)
+        public VeiculoSubscriptionViewModel TipoVeiculoAdicionado([Topic] EVeiculo tipoVeiculo, [EventMessage] Veiculo veiculo)
         {
-            return veiculo;
+            return (VeiculoSubscriptionViewModel) veiculo;
         }
 
         [GraphQLName("VeiculoAdicionado")]
         [GraphQLDescription("Retorna veículo adicionado")]
         [Subscribe]
-        public Veiculo VeiculoAdicionado([EventMessage] Veiculo veiculo)
+        public VeiculoSubscriptionViewModel VeiculoAdicionado([EventMessage] Veiculo veiculo)
         {
-            return veiculo;
+            return (VeiculoSubscriptionViewModel) veiculo;
         }
     }
 }

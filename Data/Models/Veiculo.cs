@@ -1,4 +1,5 @@
-﻿using API_DEVinCar_Graphql.Data.Enums;
+﻿using API_DEVinCar_Graphql.Data.Dtos;
+using API_DEVinCar_Graphql.Data.Enums;
 using API_DEVinCar_Graphql.Models;
 using HotChocolate.AspNetCore.Authorization;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ namespace API_DEVinCar_Graphql.Data.Models
 {
     public class Veiculo
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         [Authorize]
         public Guid Chassi { get; set; }
         public DateTime DataFabricacao { get; set; }
@@ -29,9 +30,11 @@ namespace API_DEVinCar_Graphql.Data.Models
             if (v.Rodas == null)
                 return null;
 
+            int id = int.Parse(v.Id.Substring(4));
+
             return new MotoTriciclo
             {
-                Id = v.Id,
+                Id = id,
                 Chassi = v.Chassi,
                 DataFabricacao = v.DataFabricacao,
                 Nome = v.Nome,
@@ -49,9 +52,11 @@ namespace API_DEVinCar_Graphql.Data.Models
             if (v.Flex == null)
                 return null;
 
+            int id = int.Parse(v.Id.Substring(4));
+
             return new Carro
             {
-                Id = v.Id,
+                Id = id,
                 Chassi = v.Chassi,
                 DataFabricacao = v.DataFabricacao,
                 Nome = v.Nome,
@@ -70,9 +75,11 @@ namespace API_DEVinCar_Graphql.Data.Models
             if (v.CapacidadeCacamba == null)
                 return null;
 
+            int id = int.Parse(v.Id.Substring(4));
+
             return new Camionete
             {
-                Id = v.Id,
+                Id = id,
                 Chassi = v.Chassi,
                 DataFabricacao = v.DataFabricacao,
                 Nome = v.Nome,
@@ -87,5 +94,25 @@ namespace API_DEVinCar_Graphql.Data.Models
             };
         }
 
+        public static explicit operator VeiculoSubscriptionViewModel (Veiculo v)
+        {
+            return new VeiculoSubscriptionViewModel
+            {
+                Id = v.Id,
+                Chassi = v.Chassi,
+                DataFabricacao = v.DataFabricacao,
+                Nome = v.Nome,
+                Placa = v.Placa,
+                Valor = v.Valor,
+                Cor = v.Cor,
+                Disponivel = v.Disponivel,
+                Potencia = v.Potencia,
+                Portas = v.Portas,
+                TipoCombustivel = v.TipoCombustivel,
+                CapacidadeCacamba = v.CapacidadeCacamba,
+                Flex = v.Flex,
+                Rodas = v.Rodas
+            };
+        }
     }
 }

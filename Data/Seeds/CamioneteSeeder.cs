@@ -19,7 +19,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 Valor = 109990.00,
                 Cor = "Prata",
                 Disponivel = true,
-                Id = Guid.NewGuid()
+                Id = 1
             },
             new Camionete
             {
@@ -33,7 +33,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 Valor = 260390.00,
                 Cor = "Vermelho",
                 Disponivel = false,
-                Id = Guid.NewGuid()
+                Id = 2
             },
             new Camionete
             {
@@ -47,7 +47,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 Valor = 99000.00,
                 Cor = "Azul",
                 Disponivel = true,
-                Id = Guid.NewGuid()
+                Id = 3
             },
         };
     }

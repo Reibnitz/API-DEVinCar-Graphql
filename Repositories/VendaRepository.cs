@@ -30,7 +30,7 @@ namespace API_DEVinCar_Graphql.Repositories
             return await _context.Vendas.ToListAsync();
         }
 
-        public async Task<Venda?> GetByIdAsync(Guid id)
+        public async Task<Venda?> GetByIdAsync(int id)
         {
             return await _context.Vendas.FirstOrDefaultAsync(v => v.Id == id);
         }

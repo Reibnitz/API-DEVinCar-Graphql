@@ -6,8 +6,8 @@ namespace API_DEVinCar_Graphql.Repositories.Interfaces
     {
         Task<List<T>> GetAvailableAsync();
         Task<List<T>> GetSoldAsync();
-        Task<bool> SellAsync(Guid id);
-        Task<bool> ChangeColorAsync(Guid id, string color);
-        Task<bool> ChangePriceAsync(Guid id, double price);
+        Task<bool> SellAsync(int id);
+        Task<bool> ChangeColorAsync(int id, string color);
+        Task<bool> ChangePriceAsync(int id, double price);
     }
 }

@@ -17,7 +17,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 Valor = 59999.90,
                 Cor = "Vermelho",
                 Disponivel = false,
-                Id = Guid.NewGuid()
+                Id = 1
             },
             new Carro
             {
@@ -30,7 +30,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 Valor = 24999.90,
                 Cor = "Vermelho",
                 Disponivel = false,
-                Id = Guid.NewGuid()
+                Id = 2
             },
             new Carro
             {
@@ -43,7 +43,7 @@ namespace API_DEVinCar_Graphql.Data.Seeds
                 Valor = 49999.90,
                 Cor = "Preto",
                 Disponivel = true,
-                Id = Guid.NewGuid()
+                Id = 3
             },
         };
     }
