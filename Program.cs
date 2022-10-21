@@ -7,8 +7,6 @@ using API_DEVinCar_Graphql.Services;
 using API_DEVinCar_Graphql.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -47,8 +45,6 @@ builder.Services
     .AddScoped<IVeiculoMutationsService, VeiculoMutationsService>()
 ;
 
-//builder.Services.AddHttpContextAccessor();
-
 builder.Services
     .AddAuthorization()
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -57,21 +53,8 @@ builder.Services
         options.Authority = opts.Authority;
         options.TokenValidationParameters = opts.TokenValidationParameters;
     });
-//.AddJwtBearer(options =>
-//{
-//    options.TokenValidationParameters = new TokenValidationParameters
-//    {
-//        ValidIssuer = builder.Configuration.GetSection("TokenSettings").GetValue<string>("Issuer"),
-//        ValidateIssuer = true,
-//        ValidateAudience = true,
-//        ValidateIssuerSigningKey = true,
-//        ValidAudience = builder.Configuration.GetSection("TokenSettings").GetValue<string>("Audience"),
-//        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("TokenSettings").GetValue<string>("Key"))),
-//    };
-//});
 
 builder.Services.AddHttpContextAccessor();
-
 
 builder.Services
     .AddGraphQLServer()
@@ -86,8 +69,6 @@ builder.Services
     .AddInMemorySubscriptions()
     .AddSocketSessionInterceptor<SubscriptionAuthMiddleware>()
 ;
-
-
 
 var app = builder.Build();
 

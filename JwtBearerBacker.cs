@@ -35,27 +35,21 @@ namespace API_DEVinCar_Graphql
             SecurityToken validatedToken;
             foreach (var validator in Options.SecurityTokenValidators)
             {
-                // Ensure we can even read the token at all
                 if (validator.CanReadToken(token))
                 {
                     try
                     {
-                        // Try to return a ClaimsPrincipal if we can
-                        // Otherwise an exception is thrown, caught and we continue on.
                         return validator
                             .ValidateToken(token, Options.TokenValidationParameters, out validatedToken);
                     }
                     catch (Exception ex)
                     {
-                        // If the keys are invalid, refresh config
                         if (Options.RefreshOnIssuerKeyNotFound && Options.ConfigurationManager != null
                             && ex is SecurityTokenSignatureKeyNotFoundException)
                         {
                             Options.ConfigurationManager.RequestRefresh();
                         }
 
-                        // Add to our list of failures. This was from the OG code
-                        // Not sure what we need it for.
                         if (validationFailures == null)
                             validationFailures = new List<Exception>(1);
 
@@ -65,7 +59,6 @@ namespace API_DEVinCar_Graphql
                 }
             }
 
-            // No user could be found
             return null;
         }
     }
